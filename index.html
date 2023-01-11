@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Circles Gallery Test Page</title>
     <link rel="stylesheet" href="circles-gallery.css">
+    <style>
+        .gallery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
 </head>
 <body>
     <div class="gallery"></div>
@@ -14,10 +22,17 @@
     <script src="circles-gallery.js"></script>
     <script>
         var galleryOptions = {
+            distance: 20,
             items: [{
                 image: 'https://images.unsplash.com/photo-1670808951552-9d804d0033ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzMxMTk0Mzk&ixlib=rb-4.0.3&q=80&w=400'
             }, {
                 image: 'https://images.unsplash.com/photo-1670993746473-e06450c01dbb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzMxMTk0Mzk&ixlib=rb-4.0.3&q=80&w=400'
+            }, {
+                image: 'https://images.unsplash.com/photo-1670844763152-81c99a307cf4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzMxMTk5NDI&ixlib=rb-4.0.3&q=80&w=400'
+            }, {
+                image: 'https://images.unsplash.com/photo-1672239272089-250c32c3e2e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzMxMTk5NDI&ixlib=rb-4.0.3&q=80&w=400'
+            }, {
+                image: 'https://images.unsplash.com/photo-1672239272089-250c32c3e2e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzMxMTk5NDI&ixlib=rb-4.0.3&q=80&w=400'
             }]
         };
         var gallery = document.querySelector('.gallery');

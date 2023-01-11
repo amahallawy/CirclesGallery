@@ -1,15 +1,21 @@
 :root {
+    --gallery-dim: 400px;
     --active-dim: 200px;
     --item-dim: 40px;
     --active-hover-color: rgba(0, 0, 0, 0.2);
     --item-hover-color: rgba(255, 255, 255, 0.2);
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 /* Gallery items */
 .gallery-items {
     position: relative;
-    width: var(--active-dim);
-    height: var(--active-dim);
+    width: var(--gallery-dim);
+    height: var(--gallery-dim);
 }
 
 /* Active item */
@@ -19,11 +25,13 @@
     height: var(--active-dim);
     border-radius: var(--active-dim);
     background-size: cover;
-    top: 0;
-    right: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     animation: active-circle 10s ease-out infinite;
     z-index: 30;
     animation-play-state: running;
+    background: #000;
 }
 
 .active-item a {

@@ -1,6 +1,5 @@
 // Here goes all the action
 function init(element, options) {
-    console.log(element);
     // create the gallery items container
     var galleryItems = document.createElement('div');
     galleryItems.className = 'gallery-items';
@@ -23,6 +22,32 @@ function init(element, options) {
         });
     }
     element.appendChild(galleryItems);
+
+    var activeItem = document.querySelector('.active-item');
+    var galleryItemsAll = document.querySelectorAll('.gallery-item');
+    galleryItemsAll.forEach(function(item, i) {
+        item.style.top = angleToX(
+            activeItem.offsetTop - item.clientHeight / 2, 
+            activeItem.clientHeight / 2 + item.clientHeight / 2 + options.distance, 
+            - (270 / galleryItemsAll.length * (i + 1) - 45)) + 'px';
+        item.style.left = angleToY(
+            activeItem.offsetLeft - item.clientWidth / 2, 
+            activeItem.clientWidth / 2 + item.clientWidth / 2 + options.distance, 
+            - (270 / galleryItemsAll.length * (i + 1) - 45)) + 'px';
+        item.style.background = '#de7f5f';
+    });
+}
+
+function angleToX(originX, r, theta) {
+    theta = (theta - 180) * Math.PI / 180;
+
+    return originX + r * Math.cos(theta);
+}
+
+function angleToY(originY, r, theta) {
+    theta = (theta - 180) * Math.PI / 180;
+
+    return originY - r * Math.sin(theta);
 }
 
 // add circle gallery function to DOM elements when using Vanilla JavaScript
