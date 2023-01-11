@@ -1,0 +1,59 @@
+:root {
+    --active-dim: 200px;
+    --item-dim: 40px;
+    --active-hover-color: rgba(0, 0, 0, 0.2);
+    --item-hover-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Gallery items */
+.gallery-items {
+    position: relative;
+    width: var(--active-dim);
+    height: var(--active-dim);
+}
+
+/* Active item */
+.active-item {
+    position: absolute;
+    width: var(--active-dim);
+    height: var(--active-dim);
+    border-radius: var(--active-dim);
+    background-size: cover;
+    top: 0;
+    right: 0;
+    animation: active-circle 10s ease-out infinite;
+    z-index: 30;
+    animation-play-state: running;
+}
+
+.active-item a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: var(--active-dim);
+}
+
+.active-item a:hover {
+    background: var(--active-hover-color);
+}
+
+/* Gallery item */
+.gallery-item {
+    position: absolute;
+    width: var(--item-dim);
+    height: var(--item-dim);
+    border-radius: var(--item-dim);
+    background-size: cover;
+    animation-play-state: running;
+}
+
+.gallery-item a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: var(--item-dim);
+}
+
+.gallery-item a:hover {
+    background: --item-hover-color;
+}

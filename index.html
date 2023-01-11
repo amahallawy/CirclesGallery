@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circles Gallery Test Page</title>
+    <link rel="stylesheet" href="circles-gallery.css">
+</head>
+<body>
+    <div class="gallery"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="circles-gallery.js"></script>
+    <script>
+        var galleryOptions = {
+            items: [{
+                image: 'https://images.unsplash.com/photo-1670808951552-9d804d0033ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzMxMTk0Mzk&ixlib=rb-4.0.3&q=80&w=400'
+            }, {
+                image: 'https://images.unsplash.com/photo-1670993746473-e06450c01dbb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzMxMTk0Mzk&ixlib=rb-4.0.3&q=80&w=400'
+            }]
+        };
+        var gallery = document.querySelector('.gallery');
+        gallery.circlesGallery(galleryOptions);
+
+        //$('.gallery').circlesGallery();
+    </script>
+</body>
+</html>
