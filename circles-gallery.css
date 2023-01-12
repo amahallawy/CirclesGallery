@@ -25,9 +25,8 @@
     height: var(--active-dim);
     border-radius: var(--active-dim);
     background-size: cover;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 100px;
+    left: 100px;
     animation: active-circle 10s ease-out infinite;
     z-index: 30;
     animation-play-state: running;
