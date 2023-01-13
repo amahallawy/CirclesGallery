@@ -27,6 +27,7 @@
     background-size: cover;
     top: 100px;
     left: 100px;
+    /* transform: translate(-50%, -50%); */
     animation: active-circle 10s ease-out infinite;
     z-index: 30;
     animation-play-state: running;
