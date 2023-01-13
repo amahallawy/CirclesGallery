@@ -25,22 +25,22 @@ function init(element, options) {
 
     
     var activeItem = document.querySelector('.active-item');
-    //animate(activeItem, 5000, 0, 5);
+    animate(activeItem, 5000, 0, 5);
 
     // setting style for each gallery item
     var galleryItemsAll = document.querySelectorAll('.gallery-item');
     galleryItemsAll.forEach(function(item, i) {
         // set position with reference to active gallery item
-        item.style.top = angleToX(
-            activeItem.offsetTop - item.clientHeight / 2, 
+        item.style.top = angleToY(
+            activeItem.offsetTop + item.clientHeight * 2, 
             activeItem.clientHeight / 2 + item.clientHeight / 2 + options.distance, 
             - (270 / galleryItemsAll.length * (i + 1) - 45)) + 'px';
-        item.style.left = angleToY(
-            activeItem.offsetLeft - item.clientWidth / 2, 
+        item.style.left = angleToX(
+            activeItem.offsetLeft + item.clientWidth * 2, 
             activeItem.clientWidth / 2 + item.clientWidth / 2 + options.distance, 
             - (270 / galleryItemsAll.length * (i + 1) - 45)) + 'px';
         item.style.background = '#de7f5f';
-        //animate(item, 4000, 360 / galleryItemsAll.length * i, 50);
+        animate(item, 4000, 360 / galleryItemsAll.length * i, 50);
     });
 }
 
@@ -49,10 +49,10 @@ function init(element, options) {
 // originX is the x coordinate of origin point
 // r is radius (distance)
 // theta is angle
-function angleToX(originX, r, theta) {
+function angleToY(originY, r, theta) {
     theta = (theta - 180) * Math.PI / 180;
 
-    return originX + r * Math.cos(theta);
+    return originY + r * Math.cos(theta);
 }
 
 // Got the idea from here https://stackoverflow.com/a/43642478/2398288
@@ -60,10 +60,10 @@ function angleToX(originX, r, theta) {
 // originY is the y coordinate of origin point
 // r is radius (distance)
 // theta is angle
-function angleToY(originY, r, theta) {
+function angleToX(originX, r, theta) {
     theta = (theta - 180) * Math.PI / 180;
 
-    return originY - r * Math.sin(theta);
+    return originX - r * Math.sin(theta);
 }
 
 function animate(element, duration, startAngle, r){
