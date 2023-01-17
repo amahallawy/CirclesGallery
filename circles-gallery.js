@@ -1,4 +1,6 @@
-// Here goes all the action
+var activeItem;
+
+// Here all the action starts
 function init(element, options) {
     // create the gallery items container
     var galleryItems = document.createElement('div');
@@ -18,13 +20,15 @@ function init(element, options) {
                 galleryItem.className = 'gallery-item';
                 galleryItem.innerHTML = '<a href="#gallery-item-' + i + '"></a>';
             }
+            galleryItem.style.backgroundImage = `url(${item.image})`;
+            galleryItem.style.backgroundSize = 'cover';
             galleryItems.appendChild(galleryItem);
         });
     }
     element.appendChild(galleryItems);
 
     
-    var activeItem = document.querySelector('.active-item');
+    activeItem = document.querySelector('.active-item');
     animate(activeItem, 5000, 0, 5);
 
     // setting style for each gallery item
@@ -34,38 +38,47 @@ function init(element, options) {
         item.style.top = angleToY(
             activeItem.offsetTop + item.clientHeight * 2, 
             activeItem.clientHeight / 2 + item.clientHeight / 2 + options.distance, 
-            - (270 / galleryItemsAll.length * (i + 1) - 45)) + 'px';
+            - (360 / galleryItemsAll.length * (i + 1) - 45)) + 'px';
         item.style.left = angleToX(
             activeItem.offsetLeft + item.clientWidth * 2, 
             activeItem.clientWidth / 2 + item.clientWidth / 2 + options.distance, 
-            - (270 / galleryItemsAll.length * (i + 1) - 45)) + 'px';
-        item.style.background = '#de7f5f';
+            - (360 / galleryItemsAll.length * (i + 1) - 45)) + 'px';
+        
+        // attach click event to the item
+        item.addEventListener('click', function(e) {
+            swapImages(item, activeItem);
+        });
+
+        // animate the item
         animate(item, 4000, 360 / galleryItemsAll.length * i, 50);
     });
 }
 
-// Got the idea from here https://stackoverflow.com/a/43642478/2398288
-// calculate x coordinate from angle, distance, and an origin point
-// originX is the x coordinate of origin point
-// r is radius (distance)
-// theta is angle
+/// Got the idea from here https://stackoverflow.com/a/43642478/2398288
+/// calculate x coordinate from angle, distance, and an origin point
+/// originX: the x coordinate of origin point
+/// r: radius (distance)
+/// theta: angle
 function angleToY(originY, r, theta) {
     theta = (theta - 180) * Math.PI / 180;
 
     return originY + r * Math.cos(theta);
 }
 
-// Got the idea from here https://stackoverflow.com/a/43642478/2398288
-// calculate y coordinate from angle, distance, and an origin point
-// originY is the y coordinate of origin point
-// r is radius (distance)
-// theta is angle
+/// Got the idea from here https://stackoverflow.com/a/43642478/2398288
+/// calculate y coordinate from angle, distance, and an origin point
+/// originY: the y coordinate of origin point
+/// r: radius (distance)
+/// theta: angle
 function angleToX(originX, r, theta) {
     theta = (theta - 180) * Math.PI / 180;
 
     return originX - r * Math.sin(theta);
 }
 
+/// create circular rotation
+/// element: item to be rotated
+/// duration: 
 function animate(element, duration, startAngle, r){
     var steps = 0.0;
     setInterval(() => {
@@ -79,6 +92,12 @@ function animate(element, duration, startAngle, r){
 
         steps++;
     }, 10);
+}
+
+function swapImages(sourceElement, targetElement) {
+    var temp = sourceElement.style.backgroundImage;
+    targetElement.style.backgroundImage = sourceElement.style.backgroundImage;
+    sourceElement.style.backgroundImage = temp;
 }
 
 // add circle gallery function to DOM elements when using Vanilla JavaScript
